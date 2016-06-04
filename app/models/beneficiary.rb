@@ -1,3 +1,3 @@
 class Beneficiary < Person
-  has_many: :donations
+  has_many :donations
 end

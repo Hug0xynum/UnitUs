@@ -1,0 +1,2 @@
+class Clothe < Donation
+end

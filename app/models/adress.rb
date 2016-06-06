@@ -1,4 +1,4 @@
 class Adress < ActiveRecord::Base
-  belongs_to :owner, polymorphic: true #class_name: 'User'
+  belongs_to :owner, polymorphic: true
   has_many :adverts
 end

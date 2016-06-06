@@ -5,4 +5,5 @@ class Partner < User
   has_many :adverts, as: :sender # if it's a shop
   has_many :offers, as: :sender  # if it's an association
   has_many :donations, as: :sender # both
+  has_many :stock,  -> { where is_given: false }, class_name: 'Donation'
 end

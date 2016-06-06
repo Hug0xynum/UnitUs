@@ -17,9 +17,10 @@ class CreateAdverts < ActiveRecord::Migration
       # Offer (by Association) attributes
       t.integer :quantity
 
-      # Donation (by Resident) attributes
+      # Donation (by Resident, Association or Partner) attributes
       t.references :product, index: true
       t.references :beneficiary, index: true
+      # t.references :reserved_by
       t.boolean :is_reserved
       t.boolean :is_given
 

@@ -1,5 +1,6 @@
 class Donation < Proposal
   belongs_to :beneficiary
-  has_many :tests, as: :owner, source_type: "User"
-  has_many :availabilities, through: :tests, source: :availability
+  belongs_to :product
+  has_many :timesheet, class_name: 'Timeslot', as: :owner, source_type: "Advert"
+  has_many :availabilities, through: :timesheet
 end

@@ -5,7 +5,8 @@ class CreateAdverts < ActiveRecord::Migration
       t.string :type
       t.string :label
       t.text :informations
-      t.references :sender, index: true
+      t.integer :sender_id
+      t.string :sender_type
       t.references :adress, index: true
       t.timestamps null: false
 
@@ -17,6 +18,7 @@ class CreateAdverts < ActiveRecord::Migration
       t.integer :quantity
 
       # Donation (by Resident) attributes
+      t.references :product, index: true
       t.references :beneficiary, index: true
       t.boolean :is_reserved
       t.boolean :is_given

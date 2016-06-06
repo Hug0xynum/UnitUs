@@ -1,4 +1,4 @@
 class Advert < ActiveRecord::Base
-  belongs_to :sender, class_name: "Partner"
+  belongs_to :sender, polymorphic: true
   belongs_to :adress
 end

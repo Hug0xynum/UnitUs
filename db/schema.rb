@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605001336) do
+ActiveRecord::Schema.define(version: 20160606013113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,24 +20,26 @@ ActiveRecord::Schema.define(version: 20160605001336) do
     t.string   "street"
     t.string   "postal_code"
     t.string   "city"
-    t.integer  "user_id"
+    t.string   "category"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "adresses", ["user_id"], name: "index_adresses_on_user_id", using: :btree
 
   create_table "adverts", force: :cascade do |t|
     t.string   "type"
     t.string   "label"
     t.text     "informations"
     t.integer  "sender_id"
+    t.string   "sender_type"
     t.integer  "adress_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "category"
     t.datetime "expiration_date"
     t.integer  "quantity"
+    t.integer  "product_id"
     t.integer  "beneficiary_id"
     t.boolean  "is_reserved"
     t.boolean  "is_given"
@@ -46,15 +48,24 @@ ActiveRecord::Schema.define(version: 20160605001336) do
 
   add_index "adverts", ["adress_id"], name: "index_adverts_on_adress_id", using: :btree
   add_index "adverts", ["beneficiary_id"], name: "index_adverts_on_beneficiary_id", using: :btree
-  add_index "adverts", ["sender_id"], name: "index_adverts_on_sender_id", using: :btree
+  add_index "adverts", ["product_id"], name: "index_adverts_on_product_id", using: :btree
 
   create_table "availabilities", force: :cascade do |t|
     t.string   "day"
     t.string   "part_of_day"
-    t.integer  "begin"
-    t.integer  "end"
+    t.integer  "begin",                    array: true
+    t.integer  "end",                      array: true
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "category"
+    t.string   "label"
+    t.text     "informations"
+    t.integer  "limit_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "tests", force: :cascade do |t|

@@ -4,7 +4,9 @@ class CreateAdresses < ActiveRecord::Migration
       t.string :street
       t.string :postal_code
       t.string :city
-      t.references :user, index: true
+      t.string :category
+      t.integer :owner_id
+      t.string :owner_type
       t.timestamps null: false
     end
   end

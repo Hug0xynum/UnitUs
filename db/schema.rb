@@ -68,14 +68,6 @@ ActiveRecord::Schema.define(version: 20160606013113) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string   "owner_type"
-    t.integer  "owner_id"
-    t.integer  "availability_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "timeslots", force: :cascade do |t|
     t.string   "owner_type"
     t.integer  "owner_id"
